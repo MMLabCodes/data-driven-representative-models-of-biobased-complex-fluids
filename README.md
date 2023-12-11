@@ -13,9 +13,11 @@ Email correspondence: 983045@swansea.ac.uk
 
 # Publications
 
-York D., Vidal-Daze I., Segura C., _et al._
+York D., Vidal-Daza I., Segura C., _et al._ Data-driven representative models to accelerate scaled-up atomistic simulations of bitumen and biobased complex fluids. _Submitted to Digital discovery._
 
+# Requirements
 
+An anaconda python environment is recommended 
 
 
 The script to generate data driven representative models of complex organic fluids is called;
