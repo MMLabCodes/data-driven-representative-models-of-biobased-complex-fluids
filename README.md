@@ -9,7 +9,7 @@ Authors: Daniel York, Isaac Vidal-Daza, Francisco J. Martin-Martinez
 
 Swansea University, 2022 - 2023
 
-Email correspondence: 983045@swansea.ac.uk
+Email correspondence: f.j.martin-martinez@swansea.ac.uk
 
 # Publications
 
