@@ -20,6 +20,8 @@ York D., Vidal-Daza I., Segura C., _et al._ Data-driven representative models to
 An anaconda python environment is recommended 
 
 
+# Usage
+
 The script to generate data driven representative models of complex organic fluids is called;
 	"data_driven_model_generator.py"
 
