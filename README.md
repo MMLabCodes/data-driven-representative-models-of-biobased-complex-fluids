@@ -1,5 +1,19 @@
-# data-driven-representative-models-of-biobased-complex-fluids
+# Data driven representative models of biobased complex fluids
 
+An open-source code that generates a range of data driven models to represent complex biobased fluids utilising data that 
+quantifies molecular components within a system.
+
+# Info
+
+Authors: Daniel York, Isaac Vidal-Daza, Francisco J. Martin-Martinez 
+
+Swansea University, 2022 - 2023
+
+Email correspondence: 983045@swansea.ac.uk
+
+# Publications
+
+York D., Vidal-Daze I., Segura C., _et al._
 The script to generate data driven representative models of complex organic fluids is called;
 	"data_driven_model_generator.py"
 
