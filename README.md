@@ -1,6 +1,6 @@
 # Data driven representative models of biobased complex fluids
 
-An open-source code that generates a range of data driven models to represent complex biobased fluids utilising data that 
+An open-source code that generates a range of data driven models to represent complex biobased fluids from data that 
 quantifies molecular components within a system.
 
 # Info
