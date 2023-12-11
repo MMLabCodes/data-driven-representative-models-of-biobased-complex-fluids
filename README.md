@@ -23,7 +23,6 @@ $ pip install -r requirements.txt
 ```
 
 ![Python version](https://img.shields.io/badge/python-3.7+-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Usage :computer:
 
