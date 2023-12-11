@@ -17,8 +17,12 @@ York D., Vidal-Daza I., Segura C., _et al._ Data-driven representative models to
 
 # Requirements
 
-An anaconda python environment is recommended 
+An anaconda python environment is recommended and the following packeages are required:
 
+	* sys
+ 	* os
+  	* math
+   	* pandas
 
 # Usage
 
