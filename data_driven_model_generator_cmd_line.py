@@ -7,7 +7,6 @@ Created on Thu Nov 23 11:18:20 2023
 import sys
 from functions.class_definitions import *
 from functions.model_functions import *
-from functions.csv_functions import *
 '''
 This generates data driven representative models from the final csv containing DFT data
 '''
