@@ -2,8 +2,6 @@
 
 An open-source code that generates a range of data driven models to represent complex biobased fluids from data that quantifies molecular components within a system.
 
-![Example of data driven model](images/example.png)
-
 ## Info :information_source:
 
 Authors: Daniel York, Isaac Vidal-Daza, Francisco J. Martin-Martinez 
