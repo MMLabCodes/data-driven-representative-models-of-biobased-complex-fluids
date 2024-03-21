@@ -11,18 +11,12 @@ An open-source code that generates a range of data driven models to represent co
 York D., Vidal-Daza I., Segura C., _et al._ Data-driven representative models to accelerate scaled-up atomistic simulations of bitumen and biobased complex fluids. _Submitted to Digital discovery._
 
 ## Installation
+
 Instructions for setting up your project, including required software and dependencies.
 
 ### Installation of virtual environment
 
 We first create a virtual environment to avoid dealing with other packages installed in the system:
-
-```shell
-$ mkdir Test && cd Test
-$ git clone https://github.com/MMLabCodes/data-driven-representative-models-of-biobased-complex-fluids.git
-```
-
-A virtual environment is created: 
 
 ```shell
 $ python -m venv biobased_venv
@@ -40,9 +34,16 @@ To deactivate the environment:
 $ deactivate
 ```
 
+
+```shell
+$ mkdir Test && cd Test
+$ git clone https://github.com/MMLabCodes/data-driven-representative-models-of-biobased-complex-fluids.git
+```
+
 ### Installation of dependencies and packages
 
 ```shell
+(biobased_venv) $ cd data-driven-representative-models-of-biobased-complex-fluids
 (biobased_venv) $ python -m pip install -r requirements.txt 
 ```
 
