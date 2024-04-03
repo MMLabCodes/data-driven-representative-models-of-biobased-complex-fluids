@@ -1,4 +1,4 @@
-Molecule name,Molecular weight,Area,Smiles,Total electronic energy (eV),HOMO (eV),LUMO(ev),HOMO/LUMO gap (eV),Chemical hardness,Dipole moment,Polarizability,,
+Molecule,mw,area,smiles,Total electronic energy (eV),HOMO (eV),LUMO(ev),HOMO/LUMO gap (eV),Chemical hardness,Dipole moment,Polarizability,,
  10-Heneicosenect,294.567,0.34402,CCCCCCCCCCC=CCCCCCCCCC,-22425.36187,-7.7388,1.1952,8.934,4.467,0.34848,251.39377,,
  1-Docosene,308.594,2.39478,CCCCCCCCCCCCCCCCCCCCC=C,-23493.19279,-8.2267,0.9442,9.1709,4.5854,0.43659,260.07646,,
  1-Dodecene,168.324,0.31396,CCCCCCCCCCC=C,-12813.99376,-8.2286,0.9573,9.1859,4.593,0.41962,143.99329,,
