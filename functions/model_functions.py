@@ -4,9 +4,11 @@ Created on Thu Nov 23 14:15:20 2023
 
 @author: danie
 """
+from rdkit import Chem
 import math
 import pandas as pd
-from functions.chem_functions import *
+from functions.base_functions import *
+#from functions.chem_functions import *
 '''
 This file contains functions for
     the generation of data driven representative models
@@ -24,7 +26,60 @@ Functions contained in this file are (indented functions are used by the one abo
 
 Further descriptions of each and their usagae can be found after each function.
 '''
-def all_model(molecules):
+def get_heteroatom_content(smiles, class_attribute):
+    """
+    Calculates the weighted heteroatom content based on the specified class attribute.
+
+    Args:
+        smiles (str): SMILES representation of the molecule.
+        class_attribute (str): The class attribute specifying the heteroatom content.
+
+    Returns:
+        float: Weighted heteroatom content.
+    """
+    het_weights = {"Heteroatom_content_O": 16, "Heteroatom_content_N": 14, "Heteroatom_content_S": 32}
+
+    het_wt = sum(smiles.count(atom) * weight for atom, weight in {"O": 16, "N": 14, "S": 32}.items() if atom.lower() in smiles.lower())
+
+    return het_wt * het_weights.get(class_attribute, 0)
+
+def get_weighted_average(molecules, class_attribute, model_type):
+    """
+    Calculates the weighted average of a given attribute for a list of molecules.
+
+    Args:
+        molecules (list): List of molecules.
+        class_attribute (str): The attribute for which the weighted average is calculated.
+        model_type (str): The type of model.
+
+    Returns:
+        float: Weighted average of the specified attribute.
+    """
+    if isinstance(molecules[0], list):  # Check if molecules is a list of lists
+        num_mols = len(molecules[0]) if model_type in {"group_model", "score_model", "propr_rep"} else len(molecules)
+        peak_area = [get_group_area(molecules[1][i]) if model_type in {"group_model", "score_model"} else float(molecules[1][i]) for i in range(num_mols)]
+        
+        if "Heteroatom_content" in class_attribute:
+            weights = [get_heteroatom_content(molecules[0][i].smiles) if model_type in {"group_model", "score_model"} else get_heteroatom_content(molecules[0][i].smiles) for i in range(num_mols)]
+        else:
+            weights = [float(getattr(molecules[0][i], class_attribute)) if model_type in {"group_model", "score_model"} else float(getattr(molecules[0][i], class_attribute)) for i in range(num_mols)]
+    else:  # molecules is a list of individual objects
+        num_mols = len(molecules)
+        peak_area = [float(m.peak_area) for m in molecules] if model_type != "propr_rep" else [float(m) for m in molecules]
+        
+        if "Heteroatom_content" in class_attribute:
+            weights = [get_heteroatom_content(m.smiles) for m in molecules]
+        else:
+            weights = [float(getattr(m, class_attribute)) for m in molecules]
+    
+    sum_peak_area = sum(peak_area)
+    normalized_peak_area = [area / sum_peak_area for area in peak_area]
+    weighted_average = sum(weight * area for weight, area in zip(weights, normalized_peak_area))
+    
+    return weighted_average
+
+
+def gen_all_model(molecules):
     return(molecules)
 '''
 USAGE: all_model(molecules)
@@ -33,7 +88,7 @@ USAGE: all_model(molecules)
 Returns:
     The same list of molecules (this is the benchmark "all-molecule model")
 '''
-def FT_model(molecules, threshold):
+def gen_FT_model(molecules, threshold):
     five_percent_model = []
     for molecule in molecules:
         if float(molecule.peak_area) >= threshold:
@@ -44,7 +99,7 @@ USAGE: FT_model(molecules, threshold)
     molecules = list of orca class molecules
     threshold = integer to define the desired selection threshold
 '''
-def PT_model(molecules):
+def gen_PT_model(molecules):
        all_info = []
        peak_areas = [] # Just used for inital normalising calculation
        #print(molecules)
@@ -101,7 +156,86 @@ Returns:
         [[molecule_1, molecule_2, ...], [proportion_1, proportion_2, ...]]
         Where molecule_x is a molecule object and proportion_x is its relative proportion in the model
 '''   
-def AG_model(molecules):
+def group_molecules(molecule_class_list):
+    import csv
+    smiles_list = []
+    for thing in molecule_class_list:
+        a = thing.smiles
+        smiles_list.append(thing.smiles)
+    mols_with_n_and_o = [[], [], [], []]       
+    mols_with_n = [[], [], [], []] # 5 RING, 6 RING, OTHER RING(MAYBE COMBO CORES), NO RING
+    mols_with_o = [[], [], [], []]
+    no_hetero = [[], [], [], []]       
+    #print("SMILES ARE", smiles_list)
+    N = "nitrogen"
+    O = "oxygen"
+    S = "sulfur"
+
+    five = "5-membered ring"
+    six = "6-membered ring"
+     
+    for molecule in molecule_class_list:
+        mol = Chem.MolFromSmiles(molecule.smiles)
+        
+   # for i in range(len(smiles_list)):
+    #    mol = Chem.MolFromSmiles(smiles_list[i])
+        a = has_heteroatoms(mol)
+        #print("a is", a)
+        if N in a:
+            if O in a:
+                b = has_rings(mol)
+               #print(b)
+                if five in b and six not in b:
+                    mols_with_n_and_o[0].append(molecule) # Pulls out 5 membered rings
+                elif six in b and five not in b:
+                    mols_with_n_and_o[1].append(molecule) # Pulls out 6 membered rings
+                elif len(b) != 0:
+                    mols_with_n_and_o[2].append(molecule) # Pulls out any rings that aren't just 5 or 6 (ie. indoles which have both five and six rings)
+                else:
+                    mols_with_n_and_o[3].append(molecule)
+            elif O not in a:
+                b = has_rings(mol)
+               #print(b)
+                if five in b and six not in b:
+                    mols_with_n[0].append(molecule) # Pulls out 5 membered rings
+                elif six in b and five not in b:
+                    mols_with_n[1].append(molecule) # Pulls out 6 membered rings
+                elif len(b) != 0:
+                    mols_with_n[2].append(molecule) # Pulls out any rings that aren't just 5 or 6 (ie. indoles which have both five and six rings)
+                else:
+                    mols_with_n[3].append(molecule)           
+            else:
+                pass
+        elif O in a:
+            b = has_rings(mol)
+           #print(b)
+            if five in b and six not in b:
+                mols_with_o[0].append(molecule) # Pulls out 5 membered rings
+            elif six in b and five not in b:
+                mols_with_o[1].append(molecule) # Pulls out 6 membered rings
+            elif len(b) != 0:
+                mols_with_o[2].append(molecule) # Pulls out any rings that aren't just 5 or 6 (ie. indoles which have both five and six rings)
+            else:
+                mols_with_o[3].append(molecule)
+        else:
+            b = has_rings(mol)
+           #print(b)
+            if five in b and six not in b:
+                no_hetero[0].append(molecule) # Pulls out 5 membered rings
+            elif six in b and five not in b:
+                no_hetero[1].append(molecule) # Pulls out 6 membered rings
+            elif len(b) != 0:
+                no_hetero[2].append(molecule) # Pulls out any rings that aren't just 5 or 6 (ie. indoles which have both five and six rings)
+            else:
+                no_hetero[3].append(molecule)
+    grouped_mols = []
+    grouped_mols.append(mols_with_n_and_o)
+    grouped_mols.append(mols_with_n)
+    grouped_mols.append(mols_with_o)
+    grouped_mols.append(no_hetero)
+    return(grouped_mols)
+
+def gen_AG_model(molecules):
     grouped_molecules = group_molecules(molecules)
     group_model = []
     all_mols_in_group = []
@@ -149,7 +283,7 @@ Returns:
         [[molecule_1, molecule_2, ...], [[group_1], [group_2], ...], [proporion_1, proportion_2, ...]]
         Where molecule_x is a molecule object, group_x is a molecular subclass and proportion_x is its relative proportion of that molecular subclass the model
 '''  
-def SG_model(group_model): # Takes group_model as an input as it is a avariant of that model
+def gen_SG_model(group_model): # Takes group_model as an input as it is a avariant of that model
     selected_molecules = []
     all_groups = []
     group_peaks = []
@@ -168,11 +302,11 @@ def SG_model(group_model): # Takes group_model as an input as it is a avariant o
             continue
         # Gets group average attributes
         oxygen_content = calculate_heteroatom_percentages(model)['O']
-        wa_mw = get_weighted_average(model, "mw", all_model) # wq = weighted average
-        wa_tot_en = get_weighted_average(model, "total_energy", all_model)
-        wa_polar = get_weighted_average(model, "polarizability", all_model)
-        wa_dipole = get_weighted_average(model, "dipole_moment", all_model)
-        wa_chem_hard = get_weighted_average(model, "chemical_hardness", all_model)
+        wa_mw = get_weighted_average(model, "mw", gen_all_model) # wq = weighted average
+        wa_tot_en = get_weighted_average(model, "total_energy", gen_all_model)
+        wa_polar = get_weighted_average(model, "polarizability", gen_all_model)
+        wa_dipole = get_weighted_average(model, "dipole_moment", gen_all_model)
+        wa_chem_hard = get_weighted_average(model, "chemical_hardness", gen_all_model)
         mws = [float(mol.mw) for mol in model]
         min_mw = min(mws)
         max_mw = max(mws)
@@ -308,7 +442,7 @@ Returns:
 def model_output_block(molecules, model, model_type, ranked_data):
     supported_models = ["five_percent_model", "all_model", "group_model", "propr_rep", "score_model"]
     # Set up a dictionary for the benchmark so I can score each model versus the benchmark
-    benchmark = all_model(molecules)
+    benchmark = gen_all_model(molecules)
     benchmark_values = {"Mw":0, "Chem_hard":0, "polarizability":0, "Dipole":0, "total_energy":0, "oxygen_content":0}
     benchmark_values["Mw"] = get_weighted_average(benchmark, "mw", "all_model")
     benchmark_values["Chem_hard"] = get_weighted_average(benchmark, "chemical_hardness", "all_model")
@@ -459,4 +593,35 @@ USAGE: write_output(filepath, lines)
 Returns:
     information written to an output file
 '''
+def min_atoms_4_simulation(model, model_type):
+    if model_type == "all_model" or model_type == "five_percent_model":
+        min_peak = find_minimum(model, 'peak_area')   
+        num_atoms = 0
+        for i in range(len(model)):           
+            mol = Chem.MolFromSmiles(model[i].smiles)
+            mol = Chem.AddHs(mol)          
+            num_atoms = num_atoms + (mol.GetNumAtoms()*(float(model[i].peak_area) / float(min_peak))*(len(model) + 1))
+            
+    elif model_type == "group_model" or model_type == "score_model":
+        peaks = model[2]
+        peaks = [get_group_area(thing) for thing in model[1]]
+        
+        compounds = model[0]
+        min_peak = min(peaks)
 
+        num_atoms = 0
+        for i in range(len(compounds)):
+            mol = Chem.MolFromSmiles(compounds[i].smiles)
+            mol = Chem.AddHs(mol)
+            num_atoms = num_atoms + (mol.GetNumAtoms()*(float(peaks[i]) / float(min_peak))*(len(compounds) + 1))
+            
+    elif model_type == "propr_rep":  # Assuming "propr_rep" is a string
+        model = model[0]
+        min_peak = find_minimum(model, 'peak_area')
+        num_atoms = 0
+        for i in range(len(model)):
+            mol = Chem.MolFromSmiles(model[i].smiles)
+            mol = Chem.AddHs(mol)
+            num_atoms = num_atoms + (mol.GetNumAtoms()*(float(model[i].peak_area) / float(min_peak))*(len(model) + 1))
+
+    return int(num_atoms)
