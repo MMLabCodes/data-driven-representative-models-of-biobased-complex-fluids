@@ -14,16 +14,16 @@ def main():
     """
     Specify filepaths for the csv_file and master_path
     
-    csv_file = csv_file containing DFT data in the format given below:
+    csv_file = csv_file containing DFT data in the format given below: (3 example csv files are included in the repository)
         
         Molecule, mw, area, smiles, formula, Total electronic energy (eV), HOMO (eV), LUMO(ev), Chemical hardness, Dipole moment
         
         Note: many of the information in this csv_file comes from DFT, such as: Total electronic energy (eV), HOMO (eV), LUMO(ev), Dipole moment
         
-    master_path = main directory where model information will be generated
+    master_path = main directory where model information will be generated (this is the path of the cloned directory)
     """
-    csv_file = "C:/Users/danie/Swansea University/Francisco Martin-Martinez - York_Dan/05_Others/97_bio_oil_test/data-driven-representative-models-of-biobased-complex-fluids/pb_cp_DFT_results.csv"
-    master_path = "C:/Users/danie/Swansea University/Francisco Martin-Martinez - York_Dan/05_Others/97_bio_oil_test/data-driven-representative-models-of-biobased-complex-fluids"
+    csv_file = "path/to/csv/file"
+    master_path = "path/to/cloned/directory"
     """
     Extract model name from the csv_file 
     
