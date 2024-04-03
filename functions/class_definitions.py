@@ -70,7 +70,7 @@ class orca_molecule:
         polarizability (float): Polarizability of the molecule.
         volume (float): Volume of the molecule.
     """
-    def __init__(self, name, smiles, mw, peak_area, total_energy, homo_lumo_gap, chemical_hardness, dipole_moment, polarizability, volume): # This is where the properties of the class are specified   
+    def __init__(self, name, smiles, mw, peak_area, total_energy, chemical_hardness, dipole_moment, polarizability, volume): # This is where the properties of the class are specified   
        """
         Initializes molecule properties calculated using ORCA.
 
@@ -91,7 +91,6 @@ class orca_molecule:
        self.mw = mw
        self.peak_area = peak_area
        self.total_energy = total_energy
-       self.homo_lumo_gap = homo_lumo_gap
        self.chemical_hardness = chemical_hardness
        self.dipole_moment = dipole_moment
        self.polarizability = polarizability
@@ -127,7 +126,6 @@ def csv_to_orca_class(csv_file):
             tot_energy = row[column_indices['Total electronic energy (eV)']]
             homo = row[column_indices['HOMO (eV)']]
             lumo = row[column_indices['LUMO(ev)']]
-            homo_lumo_gap = row[column_indices['HOMO/LUMO gap (eV)']]
             chemical_hardness = row[column_indices['Chemical hardness']]
             dipole_moment = row[column_indices['Dipole moment']]
             polarizability = row[column_indices['Polarizability']]
@@ -137,7 +135,7 @@ def csv_to_orca_class(csv_file):
             volume = vol_from_smiles(smiles)
             
             # Create molecule objects frome using extracted data from the csv
-            m1 = orca_molecule(molecule_name, smiles, molecular_weight, peak_area, tot_energy, homo_lumo_gap,
+            m1 = orca_molecule(molecule_name, smiles, molecular_weight, peak_area, tot_energy,
                                 chemical_hardness, dipole_moment, polarizability, volume)
             molecules.append(m1)
 
