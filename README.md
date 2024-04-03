@@ -66,3 +66,5 @@ Before running these scripts:
 ### Output data
 - The output files for each model will be located in directory generated when the script runs.
 - An output file for each model (i.e. all molecules, FT, PT, AG and SG) will be available.
+- A "_results.csv" file is generated to compile all data coming from the models.
+    - Currently this is empty but all results can be found from "...out" files.
