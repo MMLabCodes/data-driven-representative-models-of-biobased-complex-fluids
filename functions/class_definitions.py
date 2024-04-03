@@ -122,8 +122,8 @@ def csv_to_orca_class(csv_file):
         for row in reader:
             molecule_name = row[column_indices['Molecule']].strip()
             molecular_weight = round(float(row[column_indices['mw']]), 2)
-            peak_area = row[column_indices['Area']]
-            smiles = row[column_indices['Smiles']]
+            peak_area = row[column_indices['area']]
+            smiles = row[column_indices['smiles']]
             tot_energy = row[column_indices['Total electronic energy (eV)']]
             homo = row[column_indices['HOMO (eV)']]
             lumo = row[column_indices['LUMO(ev)']]
