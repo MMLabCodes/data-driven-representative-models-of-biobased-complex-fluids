@@ -121,7 +121,7 @@ def csv_to_orca_class(csv_file):
         # Extract relevant info for each line in the csv file
         for row in reader:
             molecule_name = row[column_indices['Molecule']].strip()
-            molecular_weight = round(float(row[column_indices['Molecular weight']]), 2)
+            molecular_weight = round(float(row[column_indices['mw']]), 2)
             peak_area = row[column_indices['Area']]
             smiles = row[column_indices['Smiles']]
             tot_energy = row[column_indices['Total electronic energy (eV)']]
