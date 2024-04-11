@@ -35,8 +35,7 @@ There are 2 versions:
 Before running these scripts:
 
 1. The functions folder from this associated [github](https://github.com/dyork1/data_driven_model_generator) must be in the same location as the above script/scripts.
-2. The paths in the scripts "data_driven_model_generator.py" and "data_driven_model_generator_cmd_line.py" must be changed to those in your machine.
-3. A csv file containing the following information must be available in the format below:
+2. A csv file containing the following information must be available in the format below:
 
 | Molecule | mw | area | smiles | formula | Total electronic energy (eV) | HOMO (eV) | LUMO(ev) | Chemical hardness | Dipole moment | Polarizability |
 |----------|----|------|--------|---------|------------------------------|-----------|----------|-------------------|---------------|---------------|
@@ -44,8 +43,6 @@ Before running these scripts:
 > Note 1: 'area' is the peak area coming from GCMS data and could be substituted for any quantifiable data.
 >
 > Note 2: A lot of information in the csv is obtained from DFT calculations and should be collated prior to executing these scripts.
->
-> Note 3: The order of each parameter in the csv file is not important, but the headers must match those above.
 
 ### Running the scripts
 - Interactive version:
@@ -62,7 +59,6 @@ Before running these scripts:
 	   The variables should be defined as:
 	    - <csv_file> = Path to csv file in the format specified above.
 	    - <master_path> = This will be where results files for the different models are generated. RECOMMENDED: specify this to be the directory of where the script is being run from, a new directory will be generated for each complex organic mixture.
-
 ### Output data
 - The output files for each model will be located in directory generated when the script runs.
 - An output file for each model (i.e. all molecules, FT, PT, AG and SG) will be available.
