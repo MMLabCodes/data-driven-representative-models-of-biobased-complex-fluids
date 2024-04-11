@@ -100,7 +100,7 @@ def has_rings(mol):
         no_list = ["N"]
         return(no_list)
     
-def get_group_area(list_of_molecule_class_objects):
+def get_group_area(list_of_orca_molecule_class_objects):
     """
     Calculate the total peak area of a list of molecule objects.
     
@@ -111,7 +111,7 @@ def get_group_area(list_of_molecule_class_objects):
         - tot_peak_area (float): Total peak area of the molecules.
     """
     tot_peak_area = 0
-    for m in list_of_molecule_class_objects:
+    for m in list_of_orca_molecule_class_objects:
         tot_peak_area = tot_peak_area + float(m.peak_area)
     return(tot_peak_area)
 
@@ -214,7 +214,7 @@ def calculate_heteroatom_percentages_sing_mol(molecule):
     
     return atom_weights
 
-def find_minimum(list_of_molecule_class_objects, attribute):
+def find_minimum(list_of_orca_molecule_class_objects, attribute):
     """
     Find the minimum value of a given attribute among a list of molecules.
     
@@ -227,7 +227,7 @@ def find_minimum(list_of_molecule_class_objects, attribute):
     """
     min_value = float('inf')  # Initialize with a large value, should be large enough 0_o
     
-    for obj in list_of_molecule_class_objects:
+    for obj in list_of_orca_molecule_class_objects:
         attr_value = getattr(obj, attribute)
         try:
             attr_value = float(attr_value)
