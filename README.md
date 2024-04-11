@@ -21,20 +21,20 @@ We first create a virtual environment to avoid dealing with other packages insta
 
 Test folder:
 ```shell
-'$ mkdir Test && cd Test'
-'$ git clone https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2FMMLabCodes%2Fdata-driven-representative-models-of-biobased-complex-fluids.git%2560&data=05%7C02%7CF.J.Martin-Martinez%40Swansea.ac.uk%7C919096b1d4cb426173af08dc4834d5fb%7Cbbcab52e9fbe43d6a2f39f66c43df268%7C0%7C0%7C638464639261410676%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=OvOrJ8pG0DNPvXNc%2BMaM7NVOk7PybEykdl%2FQoQ2EdDU%3D&reserved=0'
+$ mkdir Test && cd Test
+$ git clone https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2FMMLabCodes%2Fdata-driven-representative-models-of-biobased-complex-fluids.git%2560&data=05%7C02%7CF.J.Martin-Martinez%40Swansea.ac.uk%7C919096b1d4cb426173af08dc4834d5fb%7Cbbcab52e9fbe43d6a2f39f66c43df268%7C0%7C0%7C638464639261410676%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=OvOrJ8pG0DNPvXNc%2BMaM7NVOk7PybEykdl%2FQoQ2EdDU%3D&reserved=0
 ```
 We create a virtual environment:
 ```shell
-'$ python -m venv biobased_venv'
+$ python -m venv biobased_venv
 ```
 To activate this environment, we use:
 ```shell
-'$ source ./biobased_venv/bin/activate'
+$ source ./biobased_venv/bin/activate
 ```
 To deactivate the environment:
 ```shell
-'$ deactivate'
+$ deactivate
 ```
 ## Install requirements :wrench:
 
