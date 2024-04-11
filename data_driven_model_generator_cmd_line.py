@@ -22,6 +22,13 @@ def main():
         
     master_path = main directory where model information will be generated
     """
+    # Check if the correct number of arguments are provided
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <csv_file> <master_path>")
+        print("<csv_file> : This file should contain DFT data and the relative proportion of each molecule in the given complex mixture.")
+        print("<master_path> : This is the path to the cloned repository. The 'pwd' command will provide you with the required path.")
+        sys.exit(1)  # Exit with a non-zero status indicating an error
+    
     csv_file = sys.argv[1]
     master_path = sys.argv[2]
     """
