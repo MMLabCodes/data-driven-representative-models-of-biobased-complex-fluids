@@ -23,6 +23,7 @@ Test folder:
 ```shell
 $ mkdir Test && cd Test
 $ git clone https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2FMMLabCodes%2Fdata-driven-representative-models-of-biobased-complex-fluids.git%2560&data=05%7C02%7CF.J.Martin-Martinez%40Swansea.ac.uk%7C919096b1d4cb426173af08dc4834d5fb%7Cbbcab52e9fbe43d6a2f39f66c43df268%7C0%7C0%7C638464639261410676%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=OvOrJ8pG0DNPvXNc%2BMaM7NVOk7PybEykdl%2FQoQ2EdDU%3D&reserved=0
+$ cd data-driven-representative-modles-of-biobased-complex-fluids
 ```
 We create a virtual environment:
 ```shell
@@ -32,10 +33,15 @@ To activate this environment, we use:
 ```shell
 $ source ./biobased_venv/bin/activate
 ```
-To deactivate the environment:
+To deactivate the environment (once you have run the code):
 ```shell
 $ deactivate
 ```
+
+###### Note
+
+This will require python to be installed on your system or you can set up and environment using anaconda.
+
 ## Install requirements :wrench:
 
 An anaconda python environment is recommended and the following packeages are required (python 3.7 or later):
