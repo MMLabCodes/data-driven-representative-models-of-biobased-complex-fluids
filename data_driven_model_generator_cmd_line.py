@@ -135,7 +135,8 @@ def main():
         write_output(output_filename, model_output_block(molecules, models[i], model_types[i], ranks))
         
 if __name__ == "__main__":
-    main()"""
+    main()
+    """
     This script generates data-driven representative models from a final CSV containing DFT data.
     """
     def main():
