@@ -42,7 +42,7 @@ class model_dirs:
         """
         self.base_dir = base_dir
         self.model_dir = os.path.join(self.base_dir, model_name)
-        self.results_csv = os.path.join(self.base_dir, (model_name + "_model_results.csv"))
+        #self.results_csv = os.path.join(self.base_dir, (model_name + "_model_results.csv"))
        
     def gen_model_dirs(self):
         """
@@ -50,9 +50,9 @@ class model_dirs:
         """
         if not os.path.exists(self.model_dir):
             os.makedirs(self.model_dir)
-        if not os.path.exists(self.results_csv):
-            with open(self.results_csv, 'w'):
-                pass
+        #if not os.path.exists(self.results_csv):
+            #with open(self.results_csv, 'w'):
+                #pass
 
 class orca_molecule:
     """
