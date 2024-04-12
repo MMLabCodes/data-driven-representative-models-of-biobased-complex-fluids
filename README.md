@@ -40,7 +40,8 @@ $ deactivate
 
 ###### Note
 
-This will require python to be installed on your system or you can set up and environment using anaconda.
+This will require python to be installed on your system or you can set up an environment using anaconda.
+![Python version](https://img.shields.io/badge/python-3.7+-blue)
 
 ## Install requirements :wrench:
 
@@ -50,8 +51,6 @@ An anaconda python environment is recommended and the following packeages are re
 $ pip install -r requirements.txt
 ```
 This will install pandas and rdkit.
-
-![Python version](https://img.shields.io/badge/python-3.7+-blue)
 
 ## Usage :computer:
 
