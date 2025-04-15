@@ -8,11 +8,11 @@ Authors: Daniel York, Isaac Vidal-Daza, Francisco J. Martin-Martinez
 
 Swansea University, 2022 - 2023
 
-Email correspondence: [f.j.martin-martinez@swansea.ac.uk](mailto:f.j.martin-martinez@swansea.ac.uk)
+Email correspondence: [francisco.martin-martinez@kcl.ac.uk](mailto:francisco.martin-martinez@kcl.ac.uk)
 
 ## Publications :books:
 
-York D., Vidal-Daza I., Segura C., _et al._ Data-driven representative models to accelerate scaled-up atomistic simulations of bitumen and biobased complex fluids. _Submitted to Digital discovery._
+York D., Vidal-Daza I., Segura C., _et al._ Data-driven representative models to accelerate scaled-up atomistic simulations of bitumen and biobased complex fluids. _Digital Discovery, 2024, 3, 1108._
 
 # Installation
 ## Installation of a virtual environment
