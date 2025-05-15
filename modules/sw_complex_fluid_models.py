@@ -1249,6 +1249,7 @@ class complex_fluid_model_builder:
         ## NEED A CLAUSE TO ENSURE BOX length is bigger than the longest molecule ##
         if volume_scalar is None and molecule_scalar is None:
             model_name = model.model_name
+            volume_scalar, molecule_scalar = 1, 1.5
         elif volume_scalar is not None and molecule_scalar is None:
             volume_scalar = 1.5 if volume_scalar is None else volume_scalar
             model_name = f"{model.model_name}_vol_x{str(volume_scalar)}"
