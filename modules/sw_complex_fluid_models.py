@@ -1250,14 +1250,14 @@ class complex_fluid_model_builder:
         if volume_scalar is None and molecule_scalar is None:
             model_name = model.model_name
         elif volume_scalar is not None and molecule_scalar is None:
-	    volume_scalar = 1.5 if volume_scalar is None else volume_scalar
+            volume_scalar = 1.5 if volume_scalar is None else volume_scalar
             model_name = f"{model.model_name}_vol_x{str(volume_scalar)}"
         elif volume_scalar is None and molecule_scalar is not None:
-	    molecule_scalar = 1 if molecule_scalar is None else molecule_scalar
+            molecule_scalar = 1 if molecule_scalar is None else molecule_scalar
             model_name = f"{model.model_name}_mol_x{str(molecule_scalar)}"
         else:
             volume_scalar = 1.5 if volume_scalar is None else volume_scalar
-	    molecule_scalar = 1 if molecule_scalar is None else molecule_scalar
+            molecule_scalar = 1 if molecule_scalar is None else molecule_scalar
             model_name = f"{model.model_name}_mol_x{str(molecule_scalar)}_vol_x{str(volume_scalar)}"
 
         volume_scalar = 1.5 if volume_scalar is None else volume_scalar
