@@ -1,5 +1,5 @@
-⚛️ Complex Fluid Molecular Models: Generation
-===============================================
+⚛️ Complex Fluid Molecular Models: General
+==========================================
 
 This section of the guide demonstrates how to generate and inspect **complex fluid models** from data (that is supplemented with DFT calculations) and quantifies the
 porportion of each molecule in a mixture.
@@ -23,7 +23,7 @@ Prerequisites
 You must have set up the code and extracted the raw data from the csv file into a list of molecule objects as shown in the documentation.
 
 Common Model Structure
-======================
+----------------------
 
 All model instances are of the same class: ``complex_fluid_model``. This consistency makes it easy to analyze and compare across selection methods.
 
@@ -51,7 +51,7 @@ Attribute                    Description
 ===========================  ==============================================================
 
 Inspecting Model Output
-=======================
+-----------------------
 
 As detailed above, all outputs from generating models are instances of the **complex_fluid_model** class attached to the assigned variable.
 
@@ -74,8 +74,8 @@ Attributes of each model can also be printed.
   
 Examples for each generated model will be shown in the associated jupyter notebook.
 
-Model Generation
-================
+⚛️ Complex Fluid Molecular Models: Generation
+=============================================
 
 Output: Model-Specific Molecule Lists
 -------------------------------------

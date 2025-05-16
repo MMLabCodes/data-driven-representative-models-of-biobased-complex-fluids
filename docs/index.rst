@@ -19,6 +19,7 @@ Contents
    installation
    guide_to_model_generation
    guide_to_generating_amber_files
+   module_source_code
    api
    contributing
    faq
