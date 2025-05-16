@@ -1,0 +1,17 @@
+sphinx
+sphinx-rtd-theme
+
+datetime
+
+parmed
+numpy
+pandas>=2.0.0
+matplotlib
+rdkit
+scikit-learn
+seaborn
+nglview
+MDAnalysis
+openmm
+
+
