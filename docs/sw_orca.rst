@@ -1,5 +1,5 @@
 sw\_orca module
-===========================
+---------------
 
 .. automodule:: sw_orca
    :members:

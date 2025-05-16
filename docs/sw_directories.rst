@@ -1,5 +1,5 @@
 sw\_directories module
-===========================
+----------------------
 
 .. automodule:: sw_directories
    :members:
