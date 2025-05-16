@@ -137,9 +137,6 @@ The inputs to the functions will not be covered from herein as they are the same
 For a molecule to be selected is proportion in the mixture must exceed the selection threshold which is governed by the following equation:
 
 .. image:: images/pt_criteria.PNG
-   :alt: Directory structure for project
-   :align: center
-   :width: 600px
 
 **Code Example:**
 
@@ -167,9 +164,6 @@ This approach ensures that the most **representative molecules** from each group
 the groups are sorted is shown below.
 
 .. image:: images/ag_sg_criteria.PNG
-   :alt: Directory structure for project
-   :align: center
-   :width: 600px
 
 **Code Example:**
 
