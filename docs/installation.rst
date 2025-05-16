@@ -136,12 +136,20 @@ This is the place to start if you are very experienced with python or would like
 
 2_Complex_fluid_models_to_amber
 -------------------------------
-COMING SOON...
+
+EXPLANATION AND GUIDE COMING SOON...
+
+.. note:: 
+
+   Whilst no guide currently exists in the documentation this jupyter notebook contains enough information to guide you through the process of generating
+   amber files for complex fluid model systems.
 
 
 2b_Complex_fluid_models_to_amber_QUICKSTART
 -------------------------------------------
-COMING SOON...
+
+EXPLANATION AND GUIDE COMING SOON...
+
 
 
 
