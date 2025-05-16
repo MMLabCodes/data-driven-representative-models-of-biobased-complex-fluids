@@ -136,7 +136,7 @@ The inputs to the functions will not be covered from herein as they are the same
 
 For a molecule to be selected is proportion in the mixture must exceed the selection threshold which is governed by the following equation:
 
-.. image:: _static/pt_criteria.png
+.. image:: images/pt_criteria.png
    :alt: Directory structure for project
    :align: center
    :width: 600px
@@ -166,7 +166,7 @@ The **AG model** follows these steps:
 This approach ensures that the most **representative molecules** from each group are included in the final model, allowing for a more balanced representation of the dataset and visual representaiton of how
 the groups are sorted is shown below.
 
-.. image:: _static/ag_sg_criteria.png
+.. image:: images/ag_sg_criteria.png
    :alt: Directory structure for project
    :align: center
    :width: 600px
