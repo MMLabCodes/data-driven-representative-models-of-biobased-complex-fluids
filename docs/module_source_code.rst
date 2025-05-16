@@ -5,11 +5,45 @@ The source code and documented code can be found below.
 
 In some cases, there may be functions that do not appear in the code
 
-.. toctree::
-   :maxdepth: 5
+sw\_basic\_functions module
+--------------------------
 
-   sw_basic_functions
-   sw_directories
-   sw_build_systems
-   sw_orca
-   sw_complex_fluid_models
+.. automodule:: sw_basic_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+sw\_build\_systems module
+-------------------------
+
+.. automodule:: sw_build_systems
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+sw\_complex\_fluid\_systems module
+----------------------------------
+
+.. automodule:: sw_complex_fluid_systems
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+sw\_directories module
+----------------------
+
+.. automodule:: sw_directories
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+sw\_orca module
+---------------
+
+.. automodule:: sw_orca
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+
