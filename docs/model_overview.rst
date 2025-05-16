@@ -221,7 +221,7 @@ ensuring that you can compare the results from the other models with a comprehen
 The resulting model can be inspected in the ways detailed previously.
 
 Detailed model output inspection
-================================
+--------------------------------
 
 Use the following helper function to print key attributes of any model:
 
