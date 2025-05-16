@@ -1,10 +1,10 @@
 📝 Comparing data from the models
 =================================
 
-Now all the models are generated, we can extract key attributes into a dataframe.
+Now all the models are generated, key attributes can be extracted into a dataframe.
 
-🧩 Create a list of all models
-------------------------------
+Create a list of all models
+---------------------------
 
 This code consolidates the models into one list:
 
@@ -76,5 +76,13 @@ There is a single line of code that will rank the data in the dataframe:
    ranked_models = rank_models(df)
    print(ranked_models)
 
+The final ranked dataframe will look similar to the example below.
 
+.. image:: images/ranked.png
+   :alt: Directory structure for project
+   :align: center
+   :width: 600px
 
+.. note::
+
+   The *Distance_to_benchmark* is arbritrary, but useful to compare the performance of different models for the same mixture.

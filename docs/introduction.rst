@@ -9,11 +9,11 @@ of complex organic fluids. This version (V2) is the first to have proper documen
 for generation of starting structures for amber MD using the generated representative models.
 
 The key features of this package are:
-- Generating Data driven representative models of biobased complex fluids
 
+- Generating Data driven representative models of biobased complex fluids
 - Preparing molecular dynamic simulations (i.e. parameterization, system building)  
 
-To get started, please check out the installation instructions below.
+To get started, please follow the installation instructions.
 
 Authors
 -------
@@ -22,4 +22,4 @@ Authors
 **Dr. Isaac Vidal-Daza**    
 **Dr. Francisco Martin-Martinez**  
 
-Martin-Martinez Lab <https://www.martinmartinezlab.com/>`_.
+Martin-Martinez Lab <https://www.martinmartinezlab.com/>`_

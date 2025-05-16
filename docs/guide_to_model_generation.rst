@@ -17,7 +17,7 @@ it but it is recommended to work through it whilst reading this section of the d
 
 *Note: there is also a **QUICKSTART** version of this notebook - with no explanations*
 
-The code will work with your own datafiles but it is recommended to try one of the example datasets first.
+It is recommended to try one of the example datasets first but it function with any datafiles that are correctly formatted.
 
 Contents
 --------

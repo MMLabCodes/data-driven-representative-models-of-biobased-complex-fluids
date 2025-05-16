@@ -12,12 +12,13 @@ This guide goes through some prerequisites before any data driven representative
 ⬇️ Importing python modules
 ==========================
 
-📁 **modules.sw_directories**
------------------------------
+modules.sw_directories
+----------------------
 
 This module functions as a **file path manager and organizer** 🗂️.
 
 It ensures that:
+
 - 📌 All saved files are directed to appropriate folders based on the assigned **model name**.
 - 🗃️ Project files remain clean, well-structured, and easy to navigate.
 
@@ -28,10 +29,11 @@ By automating directory creation and file sorting, it helps maintain an organize
    # Import filepath manager
    from modules.sw_directories import *
 
-⚛️ **modules.sw_orca**
-----------------------
+modules.sw_orca
+---------------
 
 This module contains one core class that:
+
 - 🔄 Converts raw **DFT data** (from your input `.csv`)  
 - 🧱 Transforms each molecule’s data into a structured **Python object**  
 
@@ -42,12 +44,12 @@ This greatly simplifies handling, accessing, and integrating quantum chemistry r
    # Import filepath manager
    from modules.sw_orca import *
 
-🧪 **modules.sw_complex_fluid_models**
---------------------------------------
+modules.sw_complex_fluid_models
+-------------------------------
 
 This is the **core module** of the project 🔧.
 
-It processes groups of molecules from your raw **DFT dataset** and generates a range of **complex fluid models** 🧬.  
+It processes groups of molecules from your raw **DFT dataset** and generates a range of **complex fluid models**.  
 The primary output is an instance of the `complex_fluid_model` class, which includes several attributes — the most important being the **group of selected molecules** (more on this later).
 
 🧠 Model Types Generated:
@@ -68,7 +70,7 @@ The primary output is an instance of the `complex_fluid_model` class, which incl
 Now all of the modules are imported first step is to set up the **file system** structure using the command below.  
 This will automatically generate the necessary folders to organize your raw and processed data.
 
-📌 *Note:* You must always run the initialization command — but folders will only be created the **first time** the `manager` object is instantiated.
+📌 *Note:* You must always run the initialization command — but folders will only be created the **first time** the `manager` object is initialized.
 
 🗃️ Once initialized, a target folder will be available for you to **copy your raw data files into** (details and examples below).
 
@@ -81,7 +83,7 @@ This will automatically generate the necessary folders to organize your raw and 
 
 **BioOilDirs** is a class that contains different filepaths as variables and creates a filetree that looks like this:
 
-.. image:: _static/file_tree.png
+.. image:: images/file_tree.png
    :alt: Directory structure for project
    :align: center
    :width: 600px
@@ -106,7 +108,7 @@ This will automatically generate the necessary folders to organize your raw and 
 
 Raw data should be placed inside the ``GC_data/`` folder (as shown above) and must include:
 
-1. 🧪 **Quantification data** — e.g., GC-MS or LC-MS output  
+1. 🧪 **Quantification data** — e.g., GC-MS or LC-MS output supplemented with DFT data
 2. 🧬 **SMILES strings** — used for molecular analysis with RDKit  
 3. ⚛️ **DFT data** — optional but required for post-analysis and model scoring  
    *(Note: FT, PT, and AG models do not require DFT data)*
@@ -116,7 +118,7 @@ Raw data should be placed inside the ``GC_data/`` folder (as shown above) and mu
 
 Our provided datasets (already inside ``GC_data/``) are an ideal reference:
 
-.. image:: _static/raw_data_example.png
+.. image:: images/raw_data_example.png
    :alt: Example structure of raw data folder
    :align: center
    :width: 600px
@@ -134,8 +136,8 @@ to generate the models.
 
 For this example, we will use the ``pb_cp.csv`` file — containing **GC-MS** and **DFT data** for each molecule in the pine-bark derived bio-oil fraction.
 
-🗂️ Obtain raw data filepath
----------------------------
+Obtain raw data filepath
+------------------------
 
 The first task is to obtain the **filepath** of the folder containing the raw data.  
 We will use the **manager module** for this, which has an attribute pointing to the **GC_data/** folder as shown below.
@@ -154,8 +156,8 @@ We will use the **manager module** for this, which has an attribute pointing to 
     # show data filepath
     print(data_filepath)
 
-🔄 Convert Raw Data to Molecule Objects
----------------------------------------
+Convert Raw Data to Molecule Objects
+------------------------------------
 
 Now that we have the full **data file path**, we can pass this to the function ``csv_to_orca_class``, which will convert the raw data into a list of **molecule objects**.  
 These objects can be easily manipulated and analyzed using Python.
@@ -169,8 +171,8 @@ Pass the ``data_filepath`` to the function as shown below:
    # Convert the CSV file into molecule objects
    molecules = csv_to_orca_class(data_filepath)
 
-🧬 What Information is Contained in a Molecule Object?
-------------------------------------------------------
+What Information is Contained in a Molecule Object?
+---------------------------------------------------
 
 Now that we've created the list of molecule objects using the ``csv_to_orca_class`` function, let's explore what information each molecule object contains.
 
@@ -182,8 +184,8 @@ Each molecule object holds a variety of associated information, such as:
 - **GC-MS data** (e.g., retention time, intensity)
 - **DFT data** (e.g., energy, optimization results)
 
-🧪 Inspecting a Single Molecule Object
---------------------------------------
+Inspecting a Single Molecule Object
+-----------------------------------
 
 To understand how the molecule object is structured, let’s inspect the attributes of one molecule.
 
@@ -195,27 +197,29 @@ To understand how the molecule object is structured, let’s inspect the attribu
     # show all attributes
     molecule.__dict__
 
-🔑 Deepdive: Molecule Object Attributes
----------------------------------------
+This will show all attributes associated with the selected molecule object.
+
+Deepdive: Molecule Object Attributes
+------------------------------------
 
 Each molecule object contains a variety of attributes that describe its physical, structural, and electronic properties:
 
-- **``name``**: The name of the molecule  
-- **``smiles``**: The SMILES notation of the molecule  
-- **``mw``**: **Molecular Weight** *(g/mol)*  
-- **``peak_area``**: The proportion of the molecule in the characterization (e.g., peak area in GC-MS)  
-- ***``homo_lumo_gap``***: **HOMO-LUMO gap** *(energy difference between highest occupied and lowest unoccupied molecular orbitals)*  
-- ***``chemical_hardness``***: **Chemical hardness** *(related to molecular stability)*  
-- ***``dipole_moment``***: The **dipole moment** *(measure of polarity)*  
-- ***``polarizability``***: The **polarizability** *(how easily the electron cloud is distorted)*  
-- **``volume``**: The **molecular volume**
+- **name**: The name of the molecule  
+- **smiles**: The SMILES notation of the molecule  
+- **mw**: **Molecular Weight** *(g/mol)*  
+- **peak_area**: The proportion of the molecule in the characterization (e.g., peak area in GC-MS)  
+- *homo_lumo_gap*: **HOMO-LUMO gap** *(energy difference between highest occupied and lowest unoccupied molecular orbitals)*  
+- *chemical_hardness*: **Chemical hardness** *(related to molecular stability)*  
+- *dipole_moment*: The **dipole moment** *(measure of polarity)*  
+- *polarizability*: The **polarizability** *(how easily the electron cloud is distorted)*  
+- **volume**: The **molecular volume**
 
-Some of the attributes listed above are derived from **DFT data** and are marked *in italics* below:
+Some of the attributes listed above are derived from **DFT data** and are marked *in italics*.
 
-Other attributes such as **``mw``** and **``peak_area``** typically come directly from the raw characterization data (e.g., GC-MS).
+Other attributes such as **mw** and **peak_area** typically come directly from the raw characterization data (e.g., GC-MS) and general chemical intuition.
 
-🔍 Accessing Attributes
------------------------
+Accessing Attributes
+--------------------
 
 You can access these attributes directly from the molecule object. For example, to print the molecular weight of the first molecule in the list:
 

@@ -20,7 +20,7 @@ To create an environment, open the command prompt (ubuntu if you are using windo
 	conda create --name DataDrivenModels
 	conda activate DataDrivenModels
 
-*Note: You do not have to call your environment **DataDrivenModels** as long as the name makes sense to you*
+*Note: You do not have to call your environment *DataDrivenModels* as long as the name makes sense to you*
 
 Now the packages and different dependancies can be installed. These are all located in the **environment.yml** file in the **docs** folder of the github repository.
 This file can be used to install of the required pacakges.
@@ -71,7 +71,7 @@ If python is available, you will see something similar to the following:
 Cloning the repository - Normal method
 --------------------------------------
 
-Now the repository needs to be cloned to give access to pyton modules within this pacakge. Go to the repository page in github https://github.com/MMLabCodes/polymersimulator and find the blue button labelled '<> code'.
+Now the repository needs to be cloned to give access to pyton modules within this pacakge. Go to the repository page in github https://github.com/MMLabCodes/data-driven-representative-models-of-biobased-complex-fluids and find the blue button labelled '<> code'.
 Click here and select 'HTTPS' and copy the link. Now return to command line (ubuntu in windows), ensure you are in your home directory and execute the folowing:
 
 .. code-block:: bash
@@ -79,7 +79,7 @@ Click here and select 'HTTPS' and copy the link. Now return to command line (ubu
 	git clone copied link
 
 This will clone the repository into your pc and you will be able to access all the required files. 
-Don't forget you can naviagate through the file explorer to view these files (if you are using windows, look for the linux folder with the penguin).
+Don't forget you can navigate through the file explorer to view these files (if you are using windows, look for the linux folder with the penguin).
 
 If this method doesn't work, see the alternative method below.
 
@@ -116,14 +116,34 @@ From there, refer to the section in this documentation about different tutorials
 Even though there are pre-existing jupyter notebook notebook tutorials, there is enough guidance and explantion in the following section of this documentation
 to carry out all the tasks within this python package related to the generation of data-driven-representative-models-of-biobased-complex-fluids.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Tutorials
+1_Generating_models_of_complex_fluids
+-------------------------------------
+The contents of this notebook is explained thoroughly in the **Guide to Model Generation** section of this documentation.
+It covers:
 
-   1_Generating_models_of_complex_fluids
-   1b_Generating_models_of_complex_fluids_QUICKSTART
-   2_Complex_fluid_models_to_amber
-   2b_Complex_fluid_models_to_amber_QUICKSTART
+- How to structure raw data for use with this package
+- How to generate representative models of complex fluids
+- How to evaluate the efficacy of all generated models
+
+This notebook has good explanations throughout and is the place to to start with using this code.
+
+1b_Generating_models_of_complex_fluids_QUICKSTART
+-------------------------------------------------
+This notebook contains the exact some code as **1_Generating_models_of_complex_fluids** but with entirely stripped back explanations.
+
+This is the place to start if you are very experienced with python or would like to adapt this code into python scripts for use with command line.
+
+
+2_Complex_fluid_models_to_amber
+-------------------------------
+COMING SOON...
+
+
+2b_Complex_fluid_models_to_amber_QUICKSTART
+-------------------------------------------
+COMING SOON...
+
+
 
 
 

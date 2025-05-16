@@ -1,10 +1,7 @@
 ⚛️ Complex Fluid Molecular Models: Generation
 ===============================================
 
-Overview
-========
-
-This guide demonstrates how to generate and inspect **complex fluid models** from data (that is supplemented with DFT calculations) that quantifies the
+This section of the guide demonstrates how to generate and inspect **complex fluid models** from data (that is supplemented with DFT calculations) and quantifies the
 porportion of each molecule in a mixture.
 
 This section of the documentation covers working with:
@@ -12,11 +9,11 @@ This section of the documentation covers working with:
 - A list of molecule objects with peak area and DFT attributes.
 - Five model types:
   
-  - 🧩 **FT** — Fixed Threshold  
-  - ⚖️ **PT** — Proportional Threshold  
-  - 🧬 **AG** — Abundancy Grouping  
-  - 🏆 **SG** — Scored Grouping  
-  - 🔍 **All** — All Molecules
+  - **FT** — Fixed Threshold  
+  - **PT** — Proportional Threshold  
+  - **AG** — Abundancy Grouping  
+  - **SG** — Scored Grouping  
+  - **All** — All Molecules
 
 Each of these models work by taking a list of molecule objects and applying predetermined algorithms to create a new list of molecules.
 
@@ -58,13 +55,13 @@ Inspecting Model Output
 
 As detailed above, all outputs from generating models are instances of the **complex_fluid_model** class attached to the assigned variable.
 
-This means they can be inspected in the same manner. Using **__dict__** will show all model attributes.
+All of the attributes shown above can be shown for any model by using **__dict__**:
 
 .. code-block:: python
 
     model.__dict__
 
-This means attributes of each model can also be printed.
+Attributes of each model can also be printed.
 
 .. code-block:: python
 
@@ -80,8 +77,8 @@ Examples for each generated model will be shown in the associated jupyter notebo
 Model Generation
 ================
 
-🚀 Output: Model-Specific Molecule Lists
-----------------------------------------
+Output: Model-Specific Molecule Lists
+-------------------------------------
 
 After running the functions, you will receive a **new list** of molecule objects for each model. These objects will carry attributes specific to that model type, such as:
 
@@ -94,18 +91,18 @@ Each model allows for different levels of detail depending on how the molecules 
 
 2 Arguments are passed to every model, and these inputs are consistent among each model:
  
-1. **`model_name`**: The name should match that of your CSV file (without the .csv extension). The resulting model files will be named as `model_name_FT`, `model_name_PT`, etc., based on the model type.
-2. **`orca_molecules`**: The list of molecule objects containing the associated data. These are called **"orca_molecules"** because the DFT data originates from **ORCA** calculations.
+1. **model_name**: The name should match that of your CSV file (without the .csv extension). The resulting model files will be named as `model_name_FT`, `model_name_PT`, etc., based on the model type.
+2. **orca_molecules**: The list of molecule objects containing the associated data. These are called **"orca_molecules"** because our DFT data originates from **ORCA** calculations.
 
-The FT model is the only model with a third argument - **selection_threshold** which will be explained below.
+The FT model is the only model with a third argument - **'selection_threshold'** which will be explained below.
 
-🧩 FT Model (Fixed Threshold)
------------------------------
+FT Model (Fixed Threshold)
+--------------------------
 
-Selects molecules whose **peak area** is above a user-defined fixed threshold.
-This allows us to filter out molecules based on their relative abundance in the mixture, making the model more focused on abundant components.
+Selects molecules with **peak areas** above a user-defined fixed threshold.
+This allows for the filtering of molecules based on their relative abundance in the mixture, making the model more focused on abundant components.
 
-**selection threshold** is an argument unique to this model and is simply an integer passed to the function
+The **selection threshold** argument is unique to this model and is simply an integer passed to the function
 The selection process for the FT model is governed by the following equation, as detailed in the publication:
 
 $$ a_i > X $$
@@ -129,10 +126,13 @@ $$ a_i > X $$
    print(f"Selected Molecules: {len(pb_cp_FT_model.molecules)}")
    print(f"Weighted MW: {pb_cp_FT_model.wa_mw:.3f} g/mol")
 
-⚖️ PT Model (Proportional Threshold)
-------------------------------------
+PT Model (Proportional Threshold)
+---------------------------------
 
-The inputs to the functions will not be covered from herein as they are the same between all types of model.
+The inputs to the functions will not be covered from herein as they are the same between all types of model being:
+
+- **model_name**
+- **orca_molecules**
 
 For a molecule to be selected is proportion in the mixture must exceed the selection threshold which is governed by the following equation:
 
@@ -152,12 +152,12 @@ For a molecule to be selected is proportion in the mixture must exceed the selec
 
 The resulting model can be inspected in the ways detailed previously.
 
-🔄 AG Model (Abundancy Grouping Model)
---------------------------------------
+AG Model (Abundancy Grouping Model)
+-----------------------------------
 
 The **AG model** is generated by grouping molecules based on their **structural similarities** and **heteroatom content**. After grouping, the most **abundant molecule** in each group is selected. This model is useful for identifying dominant species within certain structural or functional classes.
 
-The selection Criteria for AG Model is detailed in the flowchart below
+The selection Criteria for AG Model is detailed in the flowchart below.
 
 The **AG model** follows these steps:
 1. **Grouping**: Molecules are grouped based on similarities in **structure** and **heteroatom content** (i.e., the type and number of non-carbon atoms present in the molecule).
@@ -170,6 +170,7 @@ the groups are sorted is shown below.
    :alt: Directory structure for project
    :align: center
    :width: 600px
+
 **Code Example:**
 
 .. code-block:: python
@@ -181,16 +182,14 @@ the groups are sorted is shown below.
 
 The resulting model can be inspected in the ways detailed previously.
 
-🏆 SG Model (Scored Grouping)
------------------------------
+SG Model (Scored Grouping)
+--------------------------
 
-Similar to AG, but selects molecule in each group with the **highest score**, based on this formula:
+This carries out the same grouping of molecules as seen in the **AG** model, but selects molecule in each group with the **highest score**, based on this formula:
 
 .. math::
 
    \text{Score} = \sum \left(\frac{X_i}{X_{\text{group average}}}\right)
-
-- ``group_molecules`` populated with structure-based groups.
 
 **Code Example:**
 
@@ -203,8 +202,8 @@ Similar to AG, but selects molecule in each group with the **highest score**, ba
 
 The resulting model can be inspected in the ways detailed previously.
 
-🔍 All Model (Benchmark)
-------------------------
+All Model (Benchmark)
+---------------------
 
 Includes **every molecule** in the dataset — no filtering or grouping.
 This means that, regardless of the algorithm applied, the **ALL model** will always include every molecule, 
